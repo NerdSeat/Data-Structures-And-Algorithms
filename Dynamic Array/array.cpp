@@ -28,7 +28,7 @@ void array<T>::insert(T data)
 template<class T>
 void array<T>::remove(T data)
 {
-    int tempIndex;
+    int tempIndex = -1;
     for(int i=0;i<=size;i++)
     {
         if(arr[i]==data)
@@ -37,13 +37,19 @@ void array<T>::remove(T data)
             break;
         }
     }
+    if(tempIndex==-1)
+    {
+        std::cout<<data<<" is not in the list"<<std::endl;
+        return;
+    }
     while(tempIndex<size)
     {
         arr[tempIndex]=arr[tempIndex+1];
         tempIndex++;
     }
-    //delete arr[size-1];
     size--;
+    std::cout<<data<<" has been removed from the list"<<std::endl;
+
 }
 template<class T>
 void array<T>::print()const
@@ -54,6 +60,22 @@ void array<T>::print()const
         std::cout<<arr[i]<<" ";
     }
     std::cout<<"] \n";
+}
+template<class T>
+void array<T>::sort()const
+{
+    T current; int j;
+    for(int i=1;i<size;i++)
+    {
+        current=arr[i];
+        j=i-1;
+        while(j>=0&&arr[j]>current)
+        {
+            arr[j+1]=arr[j];
+            j=j-1;
+        }
+        arr[j+1]=current;
+    }
 }
 template<class T>
 bool array<T>::isEmpty()const

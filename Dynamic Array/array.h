@@ -13,6 +13,7 @@ public:
     bool isEmpty()const;
     void print()const;
     int getSize()const;
+    void sort()const;
     ~array();
 private:
     int size;

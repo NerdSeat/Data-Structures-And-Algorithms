@@ -1,5 +1,6 @@
 /*This class is just to demonstrate the functionality of the dynamic
 array created earlier*/
+#pragma once
 #include "array.h"
 #include<string>
 
@@ -16,6 +17,7 @@ public:
     void setYear(int y);
     friend std::ostream& operator <<(std::ostream &print,const book& b);
     friend bool operator>(const book& b1,const book& b2);
+    friend bool operator==(const book& b1,const book& b2);
     ~book();
 private:
     std::string author;

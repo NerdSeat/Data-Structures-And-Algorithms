@@ -27,6 +27,12 @@ void book::setTitle(std::string t)
 void book::setYear(int y)
 {year=y;}
 bool operator>(const book& b1,const book& b2)
-{return b1.title>b2.title;}
+{
+    return b1.title>b2.title;
+}
+bool operator==(const book& b1,const book& b2)
+{
+    return b1.title==b2.title;
+}
 book::~book()
 {}

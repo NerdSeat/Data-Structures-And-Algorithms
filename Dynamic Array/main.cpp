@@ -8,12 +8,18 @@ int main()
     book Physics("Relitivity:Special and General Theory","Albert Einstein",1916);
     book Fiction("Adventures of Oliver Twist","Charles Dickens",1839);
     book CompSci("Computer Organisation and Architecture","William Stallings",2013);
+    book Geography("History of Techtonation","Joseph Bliss",2020);
     array<book> library(4);
     library.insert(Maths);
     library.insert(Physics);
     library.insert(Economics);
     library.insert(Fiction);
     library.insert(CompSci);
+    library.print();
+    library.sort();
+    library.print();
+    library.remove(Physics);
+    library.remove(Geography);
     library.print();
     return 0;
 }
