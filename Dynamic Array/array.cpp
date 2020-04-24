@@ -84,5 +84,5 @@ template<class T>
 int array<T>::getSize()const
 {return size;}
 template<class T>
-array<T>::~array()
+inline array<T>::~array()
 {delete[] arr;}

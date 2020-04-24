@@ -20,17 +20,17 @@ std::ostream& operator <<(std::ostream &print,const book& b)
     std::cout<<b.title<<"\t"<<b.author<<"\t"<<b.year<<std::endl;
     return print;
 }
-void book::setAuthor(std::string a)
+inline void book::setAuthor(std::string a)
 {author = a;}
-void book::setTitle(std::string t)
+inline void book::setTitle(std::string t)
 {title=t;}
-void book::setYear(int y)
+inline void book::setYear(int y)
 {year=y;}
-bool operator>(const book& b1,const book& b2)
+inline bool operator>(const book& b1,const book& b2)
 {
     return b1.title>b2.title;
 }
-bool operator==(const book& b1,const book& b2)
+inline bool operator==(const book& b1,const book& b2)
 {
     return b1.title==b2.title;
 }
