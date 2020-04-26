@@ -1,7 +1,6 @@
 /*This class is just to demonstrate the functionality of the dynamic
 array created earlier*/
 #pragma once
-#include "array.h"
 #include<string>
 
 class book
