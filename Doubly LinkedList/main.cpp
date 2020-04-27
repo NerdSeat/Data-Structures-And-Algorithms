@@ -15,12 +15,12 @@ int main()
     library.insert(Economics);
     library.insert(Fiction);
     library.insert(CompSci);
-    //library.print();
-    library.printReverse();
-   /* library.sort();
     library.print();
+    library.printReverse();
+    //library.sort();
+    //library.print();
     library.remove(Physics);
     library.remove(Geography);
-    library.print();*/
+    library.print();
     return 0;
 }

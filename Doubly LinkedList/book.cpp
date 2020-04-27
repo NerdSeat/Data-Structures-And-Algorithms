@@ -26,13 +26,13 @@ inline void book::setTitle(std::string t)
 {title=t;}
 inline void book::setYear(int y)
 {year=y;}
-inline bool operator>(const book& b1,const book& b2)
+bool operator>(const book& b1,const book& b2)
 {
     return b1.title>b2.title;
 }
-inline bool operator==(const book& b1,const book& b2)
+bool operator==(const book& b1,const book& b2)
 {
-    return b1.title==b2.title;
+    return (b1.title==b2.title)&&(b1.author==b2.author);
 }
 book::~book()
 {}

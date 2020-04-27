@@ -1,6 +1,7 @@
 /*This class is just to demonstrate the functionality of the dynamic
 array created earlier*/
-#pragma once
+#ifndef BOOK_H
+#define BOOK_H
 #include<string>
 #include<iostream>
 class book
@@ -23,5 +24,4 @@ private:
     std::string title;
     int year;
 };
-
-
+#endif

@@ -29,8 +29,8 @@ void doublyLinkedList<T>::insert(T d)
     Node<T>* temp = newNode(d);
     //inserts the node at the head of the link
     temp->next=head;
-    head=temp;
-    temp->previous=head;
+    head->previous=temp;
+    head = temp;
     size++;
 }
 template<class T>
@@ -61,6 +61,43 @@ template<class T>
 void doublyLinkedList<T>::sort()const
 {
 
+}
+template<class T>
+void doublyLinkedList<T>::remove(T d)
+{
+    Node<T> *temp = new Node<T>();
+    if(head->data==d)
+    {
+        temp=head->next;
+        delete head;
+        head=temp;
+        size--;
+        return;
+    }
+    if(tail->data==d)
+    {
+        temp=tail->previous;
+        delete tail;
+        tail=temp;
+        size--;
+        return;
+    }
+    Node<T>* trail = new Node<T>();
+    trail=head;
+    temp = head->next;
+    while (temp!=nullptr)
+    {
+        if(temp->data==d)
+        {
+            trail->next=temp->next;
+            delete temp;
+            size--;
+            return;
+        }
+        trail=trail->next;
+        temp=temp->next;
+    }
+    std::cout<<d<<" is not in the list."<<std::endl;
 }
 template<class T>
 inline T doublyLinkedList<T>::peek()const

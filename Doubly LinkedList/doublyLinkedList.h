@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
 #include "Node.h"
 #include <iostream>
 #include <cassert>
@@ -21,3 +22,4 @@ private:
     Node<T>* tail;
     int size;
 };
+#endif
