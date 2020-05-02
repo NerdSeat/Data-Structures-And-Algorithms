@@ -58,11 +58,6 @@ void doublyLinkedList<T>::printReverse()const
     std::cout<<"]"<<std::endl;
 }
 template<class T>
-void doublyLinkedList<T>::sort()const
-{
-
-}
-template<class T>
 void doublyLinkedList<T>::remove(T d)
 {
     Node<T> *temp = new Node<T>();
@@ -111,8 +106,37 @@ inline bool doublyLinkedList<T>::isEmpty()const
     return size==0;
 }
 template<class T>
+void doublyLinkedList<T>::sort()const
+{
+    Node<T>* temp = new Node<T>();
+    Node<T>* track = new Node<T>();
+    T data;
+    temp = head->next;
+    while(temp!=nullptr)
+    {
+        track = temp->previous;
+        while(track!=nullptr)
+        {
+            if(track->data>temp->data)
+            {
+                data = temp->data;
+                temp->data = track->data;
+                track->data = data;
+            }
+            track = track->previous;
+        }
+        temp=temp->next;
+    }
+}
+template<class T>
 doublyLinkedList<T>::~doublyLinkedList()
 {
-    delete head;
-    delete tail;
+    Node<T> * temp = new Node<T>();
+    temp = head->next;
+    while (temp!=nullptr)
+    {
+        delete head;
+        head=temp;
+        temp=temp->next;
+    }
 }
