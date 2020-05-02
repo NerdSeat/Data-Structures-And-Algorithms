@@ -18,6 +18,7 @@ int main()
     library.push(CompSci);
     library.push(Geography);
     library.push(History);
+    library.pop();
     library.print();
     //library.printReverse();
    // library.sort();

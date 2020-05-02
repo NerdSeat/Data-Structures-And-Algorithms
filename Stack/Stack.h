@@ -12,7 +12,7 @@ public:
     Stack();
     ~Stack();
     void push(const T &d);
-    void pop();
+    T pop();
     int get_size()const;
     bool isEmpty()const;
     void print()const;

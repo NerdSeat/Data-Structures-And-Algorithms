@@ -16,17 +16,19 @@ void Stack<T>::push(const T &data)
     size++;
 }
 template<class T>
-void Stack<T>::pop()
+T Stack<T>::pop()
 {
     if(isEmpty())
     {
         std::cout<<"The stack is empty\n";
         exit(0);
     }
-    std::cout<<top->data<<std::endl;
+    T val = top->data;
     Node<T>* temp = top->link;
     delete top;
     top = temp;
+    std::cout<<val<<std::endl;
+    return val;
 }
 template<class T>
 int Stack<T>::get_size()const
