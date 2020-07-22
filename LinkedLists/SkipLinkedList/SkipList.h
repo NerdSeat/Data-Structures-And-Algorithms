@@ -7,10 +7,11 @@ template <typename T>
 class SkipList
 {
 private:
-    T /* data */
+    T 
 
 public:
     SkipList(T /* args */);
+    
 };
 
 #endif
