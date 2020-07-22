@@ -1,19 +1,19 @@
 //#include "LinkedList.h"
-#include "LinkedList.cpp"
+#include "DoublyLinkedList.cpp"
 #include <iostream>
 #include <string>
 
  int main()
 {
-    LinkedList<int> numbers;
-    LinkedList<std::string> names;
-    LinkedList<std::string> reverse;
+    DoublyLinkedList<int> numbers;
+    DoublyLinkedList<std::string> names;
+    DoublyLinkedList<std::string> reverse;
     numbers.insertHead(5);
     numbers.insertHead(8);
     numbers.insertHead(1);
     numbers.insertHead(3);
     numbers.insertHead(2);
-    numbers.sort();
+    //numbers.sort();
     numbers.printList();
     std::cout<<"The size of the integer list is: "<<numbers.getSize()<<std::endl;
     names.insertHead("Joseph");
@@ -22,19 +22,17 @@
     names.insertHead("Holden");
     names.insertHead("David");
     names.printList();
-    std::cout<<"The number of the people registered is: "<<names.getSize()<<std::endl;
-    names.remove("Joseph");
-    names.printList();
-
-    std::cout<<"The number of the people registered is: "<<names.getSize()<<std::endl;
-    names.sort();
-    names.printList();
+    std::cout<<"names printed in reverse \n";
+    names.reversePrint();
+    std::cout<<"The names entered in the tail of the list is :\n";
     reverse.insertTail("Joseph");
     reverse.insertTail("Matt");
     reverse.insertTail("Dean");
     reverse.insertTail("Holden");
     reverse.insertTail("David");
     reverse.printList();
-    
-    return 0;
+    std::cout<<"The number of the people registered is: "<<names.getSize()<<std::endl;
+    names.removeNode("Dean");
+    std::cout<<"The number of the people registered is: "<<names.getSize()<<std::endl;
+    names.printList();
 }
