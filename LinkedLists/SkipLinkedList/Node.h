@@ -6,7 +6,5 @@ struct Node
 {
     T data;
     Node **next;
-    Node(int level,T &value);
-    ~Node();
 };
 #endif
