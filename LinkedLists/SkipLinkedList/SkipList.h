@@ -4,8 +4,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-
-const int MAX_LEVEL = 6;
+#include <cstring>
+#include<ctime>
+const float probability = 0.5;//node level probability
+#define MAX_LEVEL 6
 template <typename T>
 class SkipList
 {
@@ -14,12 +16,13 @@ private:
     nodePtr* root[MAX_LEVEL];
     nodePtr* createNode(T data);
     int chooseLevel();
-
+    inline float frand();
 public:
     SkipList();
     ~SkipList();
     void insert(T data);
     bool search(T data);
+    void remove(T data);
     
 };
 
