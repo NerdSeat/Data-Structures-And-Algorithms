@@ -17,9 +17,7 @@ void Fraction::factor()
     while (gcd != 0)
     {
         if ((denominator % gcd == 0) && (numerator % gcd == 0))
-        {
             break;
-        }
         gcd--;
     }
     this->numerator /= gcd;
