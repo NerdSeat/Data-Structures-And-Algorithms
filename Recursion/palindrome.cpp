@@ -6,8 +6,8 @@ bool isPalindrome(std::string str)
 {
     bool palindrome = false;
     if (str.length() <= 1)
-        palindrome = true;
-    else if (str.front() == str.back())
+        return true;
+    if (str.front() == str.back())
         palindrome = isPalindrome(str.substr(1, str.length() - 2));
     return palindrome;
 }
