@@ -1,23 +1,22 @@
 #ifndef STACK_H
 #define STACK_H
-#include<iostream>
+#include <iostream>
 #include "Node.h"
-
 
 template <typename T>
 class Stack
 {
 private:
     Node<T>* head;
-    unsigned int count;
-    Node<T>* createNode(T );
+    Node<T>* createNode(T);
+    uint16_t count;
+
 public:
     Stack();
-    T pop();
-    T top()const;
-    void push(T data);
-    unsigned int size()const;
-
+    auto pop();
+    void push(const T &data);
+    auto top() const;
+    bool empty() const;
 };
 
 #endif
