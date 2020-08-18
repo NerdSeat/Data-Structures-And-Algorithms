@@ -9,7 +9,7 @@ std::forward_list<int> merge(std::forward_list<int> list1, std::forward_list<int
 {
     std::forward_list<int> list;
     auto l_one = list1.begin(), l_two = list2.begin();
-//This is if else statement is necessary to initialise the beging of the list for the insert_after statement.
+//This is if else statement is necessary to initialise the begining of the list for the insert_after statement.
 //The forward list can either insert at the front, or after some pointer
     if (*l_one <= *l_two)
     {
