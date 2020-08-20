@@ -2,7 +2,6 @@
 #include <stack>
 #include <vector>
 #include<map>
-#include<algorithm>
 
 bool balanced(std::string str)
 {
@@ -11,7 +10,7 @@ bool balanced(std::string str)
     values.insert(std::make_pair('{', '}'));
     values.insert(std::make_pair('[', ']'));
     std::stack<char> braces;
-    //bool balanceSoFar = true;
+    bool bal = false;
     int i = 0;
     while (i < str.length())
     {
@@ -22,36 +21,27 @@ bool balanced(std::string str)
         }
         else if(c==')'||c=='}'||c==']')
         {
-            if (braces.empty())
-                return false;
-            if(c!=values[braces.top()])
-                return false;
+            if (c!=values[braces.top()]||braces.empty())
+                return bal;
             braces.pop();
         }
         ++i;
     }
-    return braces.empty();
+    return bal=braces.empty();
 }
 
 int main()
 {
     std::vector<std::string> vec;
-    std::string curl = "{this{is (a{ )balan}ced} string{}}";
-    std::string unbal = "(()[])";
+    std::string curl = "{this{is a{ba([()])lan}ced} string{}}";
+    std::string unbal = "{(({})][])}";
     vec.push_back(curl);
     vec.push_back(unbal);
     for (auto x : vec)
         if (balanced(x))
-            std::cout << x << " is a string with balanced braces\n";
+            std::cout << x << " is a string with balanced paranthesis\n";
         else
-            std::cout << x << " is not a string with balanced braces\n";
+            std::cout << x << " is not a string with balanced paranthesis\n";
 
-    std::map<char, char> values;
-    values.insert(std::make_pair('(', ')'));
-    values.insert(std::make_pair('{', '}'));
-    values.insert(std::make_pair('[', ']'));
-    char c = '[';
-    std::cout << values.count(c) << std::endl;
-    std::cout << values[c] << std::endl;
     return 0;
 }
