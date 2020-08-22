@@ -23,6 +23,9 @@ public:
     bool isInList(T data);
     bool isEmpty();
     void printList();
-    unsigned int getSize();
+  T* begin()const;
+  T* end()const;
+
+  unsigned int getSize();
 };
 #endif

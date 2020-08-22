@@ -44,6 +44,17 @@ Node<T> *LinkedList<T>::createNode(T data)
     Node<T> *node = new Node<T>();
     node->data = data;
     return node;
+
+}
+template<typename T>
+T* LinkedList<T>::begin()const
+{
+  return head;
+}
+template<typename T>
+T* LinkedList<T>::end()const
+{
+  return tail;
 }
 template <typename T>
 bool LinkedList<T>::isEmpty()
@@ -126,5 +137,5 @@ LinkedList<T>::~LinkedList()
         delete temp;
         temp = head;
     }
-    delete tail;
+
 }
