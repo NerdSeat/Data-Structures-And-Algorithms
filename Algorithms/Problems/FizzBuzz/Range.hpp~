@@ -1,0 +1,20 @@
+#ifndef RANGE_H
+#define RANGE_H
+#include <iostream>
+#include <vector>
+
+
+class Range
+{
+ private:
+  int min,current,max;
+  Range* iterator;
+public:
+  Range(unsigned int y);
+  Range(int min, int max);
+  Range* begin();
+  Range* end();
+  bool operator!=(const Range& rhs);
+  
+};
+#endif
