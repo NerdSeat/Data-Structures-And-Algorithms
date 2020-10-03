@@ -32,6 +32,18 @@ Node<T>* reverse(Node<T> *head)
 }
 
 template<class T>
+Node<T>* recursive_reverse(Node<T>* head)
+{
+  if(head==nullptr|| head->link==nullptr)
+    return head;
+  Node<T>* temp = recursive_reverse(head->link);
+  head->link->link = head;
+  head->link=nullptr;
+  return temp;
+}
+
+
+template<class T>
 void print(Node<T>* head)
 {
   Node<T>* temp = head;
@@ -48,7 +60,7 @@ int main()
   list->link->link = new Node<std::string>("Mendy");
   list->link->link->link = new Node<std::string>("Robert");
   print(list);
-  Node<std::string>* reversedList =  reverse(list);
+  Node<std::string>* reversedList =  recursive_reverse(list);
   std::cout<<"\nThe list after calling the reverse function\n";
   print(reversedList);
   std::cout<<std::endl;
