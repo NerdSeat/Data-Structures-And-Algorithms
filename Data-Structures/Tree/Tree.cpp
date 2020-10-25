@@ -113,30 +113,50 @@ Node<T>* Tree<T>::privateReturnNode(Node<T>* node, T val)const
             {
                 return privateReturnNode(node->right,val);
             }
-        }
-        
+        }      
     }
     else
         return nullptr;
-    
 }
 template<class T>
 void Tree<T>::displayChildren(T d)const
 {
     Node<T>* parent = returnNode(d);
+    if(parent==nullptr)
+    {
+        std::cout<<"The node "<<d<<" is not in the tree\n";
+        return;
+    }
+    std::cout<<"The parent node is "<<d<<"\n";
     if(parent->left==nullptr && parent->right==nullptr)
     {
         std::cout<<d<<" is a leaf node\n";
         return;
     }
     if(parent->left!=nullptr)
-        std::cout<<"left node: "<<parent->left->data<<"\n";
+        std::cout<<"left child: "<<parent->left->data<<"\n";
     else 
         std::cout<<d<<" has no left child\n";
     if(parent->right!=nullptr)
-        std::cout<<"right node: "<<parent->right->data<<"\n";
+        std::cout<<"right child: "<<parent->right->data<<"\n";
     else 
         std::cout<<d<<" has no right child\n";
-    if(parent==nullptr)
-        std::cout<<d<<" is not in the tree\n";
+}
+template<class T>
+T Tree<T>::FindSmallestNode()const
+{
+    return privateFindSmallestNode(root);
+}
+template<class T>
+T Tree<T>::privateFindSmallestNode(Node<T>* node)const
+{
+    if(root==nullptr)
+    {
+        std::cout<<"The tree is empty\n";
+        return -1000;
+    }
+    if(node->left!=nullptr)
+        return privateFindSmallestNode(node->left);
+    else
+        return node->data;
 }

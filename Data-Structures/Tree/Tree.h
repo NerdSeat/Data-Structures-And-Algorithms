@@ -12,6 +12,7 @@ private:
     void privateInsert(Node<T>* n,T val);
     void privateDisplay(Node<T>* node)const;
     Node<T>* privateReturnNode(Node<T>* node,T val)const;
+    T privateFindSmallestNode(Node<T>* node)const;
 public:
     Tree();
     Tree(T data);
@@ -23,4 +24,5 @@ public:
     bool empty()const;
     Node<T>* returnNode(T d)const;
     void displayChildren(T d)const;
+    T FindSmallestNode()const;
 };

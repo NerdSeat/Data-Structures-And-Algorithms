@@ -13,6 +13,7 @@ int main()
     std::cout<<"printing the tree after adding data\n";
     tree.display();
     std::cout<<std::endl;
-    tree.displayChildren(100);
+    tree.displayChildren(64);
     tree.displayChildren(5);
+    std::cout<<"The smallest value in the tree is \n"<<tree.FindSmallestNode();
 }
