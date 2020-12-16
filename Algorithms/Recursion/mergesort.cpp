@@ -38,7 +38,7 @@ void merge(T array[],int start,int mid,int end)
     while(j<right)
     {
         array[k]=right_array[j];
-        i++;
+        k++;
         j++;
     }
     delete[]left_array;
