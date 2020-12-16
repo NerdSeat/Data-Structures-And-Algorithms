@@ -21,14 +21,13 @@ void merge(T array[],int start,int mid,int end)
        {
            array[k]=left_array[i];
            i++;
-           k++;
        }
        else
        {
            array[k]=right_array[j];
            j++;
-           k++;
        }
+        k++;
     }
     while(i<left)
     {
