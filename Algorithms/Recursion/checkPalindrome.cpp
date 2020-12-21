@@ -33,6 +33,7 @@ int main()
         std::cout<<stringPali2<<" is a palindrome\n";
     else
         std::cout<<stringPali2<<" is not a palindrome \n";
+
     
     return 0;
 }
