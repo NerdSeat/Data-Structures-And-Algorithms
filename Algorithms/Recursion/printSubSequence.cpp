@@ -17,6 +17,4 @@ int main()
 {
     std::string input = "abc", output="";
     subStrings(input,output);
-  //  std::cout<<output<<std::endl;
-
 }
