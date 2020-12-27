@@ -20,14 +20,12 @@ void merge(std::vector<it>& data, int  begin, int midpoint, int end)
 
     int k = begin, i = 0, r = 0;
     while (i < left.size() && r < right.size())
-    {
         data[k++] = left[i] < right[r] ? left[i++] : right[r++];
-    }
 
 //copy left left-overs to the main vector
     while (i < left.size())
         data[k++] = left[i++];
-        
+
 //copy right left-overs to the main vector;
     while (r < right.size())
         data[k++] = right[r++];
