@@ -1,92 +1,64 @@
 #include<iostream>
 #include<string>
+#include<vector>
+#include<iterator>
 #include<algorithm>
-template<class T>
-void merge(T array[],int start,int mid,int end)
+
+template<typename it>
+void merge(std::vector<it>& data, int  begin, int midpoint, int end)
 {
-    int left = mid-start+1;
-    int right = end-mid;
-    T *left_array = new T[left];
-    T *right_array = new T[right];
+    std::vector<it> left(midpoint - begin+1);
+    std::vector<it> right(end - midpoint);
     
-    for(int i=0;i<left;i++)
-        left_array[i] = array[i+start];
-    for(int j =0;j<right;j++)
-        right_array[j]=array[mid+1+j];
-    int k = start,j=0,i=0;
+    //populate the left vector
+    for (int j = 0; j < left.size(); ++j)
+        left[j] = data[j+begin];
 
-    while (i<left &&j<right)
+    //populate the right vector
+    for (int j = 0; j < right.size(); ++j)
+        right[j] = data[j + midpoint+1];
+
+    int k = begin, i = 0, r = 0;
+    while (i < left.size() && r < right.size())
     {
-       if(left_array[i]<=right_array[j])
-       {
-           array[k]=left_array[i];
-           i++;
-       }
-       else
-       {
-           array[k]=right_array[j];
-           j++;
-       }
-        k++;
+        data[k++] = left[i] < right[r] ? left[i++] : right[r++];
     }
-    while(i<left)
-    {
-        array[k] = left_array[i];
-        k++;
-        i++;
-    }
-    while(j<right)
-    {
-        array[k]=right_array[j];
-        k++;
-        j++;
-    }
-    delete[]left_array;
-    delete[]right_array;
-}
-template<class T>
-void mergeSort(T array[], int start,int end)
-{
-    int mid = start + (end - start)/2;
-    if(start<end)
-    {
-        mergeSort(array,start,mid);
-        mergeSort(array,mid+1,end);
-        merge(array,start,mid,end);
-    }
+
+//copy left left-overs to the main vector
+    while (i < left.size())
+        data[k++] = left[i++];
+        
+//copy right left-overs to the main vector;
+    while (r < right.size())
+        data[k++] = right[r++];
 }
 
-template<class T>
-void print(T data)
+template<typename it>
+void mergesort(std::vector<it>& data, int start, int end)
 {
-    std::cout<<data<<"\t";
+    if (end-start<2)
+        return;
+    int mid = start + (end - start) / 2;
+
+    mergesort(data, start, mid);
+    mergesort(data, mid+1, end);
+    merge(data, start, mid, end);
 }
+
 int main()
 {
-    std::string digits[] = {"2346135843","8249004533","0954476756","7381033606",
-        "5633680329","4091753471","7534156282","8788896255","2077980173","3732183423"};
-    
-    int numbers[10] = {91,81,98,92,58,34,79,59,86,47};
-    std::cout<<"the given numbers are:\n";
-    for(int i=0;i<10;i++)
-        print(numbers[i]);
-    std::cout<<std::endl;
-    mergeSort(numbers,0,9);
-    
-    std::cout<<"the sorted numbers are:\n";
-    for(int i=0;i<10;i++)
-        print(numbers[i]);
-    std::cout<<std::endl;
+    std::vector<int> data = { 5,12,45,2,67,8 };
+    int n = data.size()-1;
+    mergesort(data, 0, n);
 
-    std::cout<<"the given digits are:\n";
-    for(int i=0;i<10;i++)
-        print(digits[i]);
-    std::cout<<std::endl;
+    std::vector<std::string> names = { "Joseph","Nichol","Anand","Lisa","Matt","Dave" };
+    n = names.size()-1;
     
-    std::cout<<"the sorted digits are:\n";
-        mergeSort(digits,0,9);
-    for(int i=0;i<10;i++)
-        print(digits[i]);
-    std::cout<<std::endl;
+    mergesort(names, 0, n);
+    std::copy(std::begin(data), std::end(data), std::ostream_iterator<int>(std::cout, "\t"));
+    std::cout << "\n";
+
+    std::copy(std::begin(names), std::end(names), std::ostream_iterator<std::string>(std::cout, "\t"));
+    std::cout << "\n";
     return 0;
 }
