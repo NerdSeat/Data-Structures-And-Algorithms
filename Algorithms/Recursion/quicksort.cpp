@@ -1,6 +1,8 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<algorithm>
+#include<iterator>
 
 template<class T>
 void swap(T& val1,T& val2)
@@ -27,44 +29,31 @@ int partition(std::vector<T>&vec,int start,int end)
     return partIndex;
 }
 template<class T>
-void quickSort(std::vector<T>&vec,int start,int end)
+void qsort(std::vector<T>&vec,int start,int end)
 {
-    if(start<end)
-    {
-        int partIndex = partition(vec,start,end);
-        quickSort(vec,start,partIndex-1);
-        quickSort(vec,partIndex+1,end);
-    }
-}
+    if(end<start)
+        return;
+    
+    int partIndex = partition(vec,start,end);
+    qsort(vec,start,partIndex-1);
+    qsort(vec,partIndex+1,end);
 
-template<class T>
-void print(const std::vector<T> vec)
-{
-    for(auto v:vec)
-        std::cout<<v<<"\t";
-    std::cout<<std::endl;
 }
 
 int main()
 {
-    std::vector<std::string> digits = {"2346135843","8249004533","0954476756","7381033606",
-        "5633680329","4091753471","7534156282","8788896255","2077980173","3732183423"};
-    
-    std::vector<int> numbers = {91,81,98,92,58,34,79,59,86,47};
-    std::cout<<"the given numbers are:\n";
-    print(numbers);
-    quickSort(numbers,0,numbers.size()-1);
-    
-    std::cout<<"the sorted numbers are:\n";
-    print(numbers);
+    std::vector<int> data = { 5,12,45,2,67,8 };
+    int n = data.size()-1;
+    qsort(data, 0, n);
 
-
-    std::cout<<"the given digits are:\n";
-    print(digits);
+    std::vector<std::string> names = { "Joseph","Nichol","Anand","Lisa","Matt","Dave" };
+    n = names.size()-1;
     
-    std::cout<<"the sorted digits are:\n";
-    quickSort(digits,0,digits.size()-1);
-    print(digits);
+    qsort(names, 0, n);
+    std::copy(std::begin(data), std::end(data), std::ostream_iterator<int>(std::cout, "\t"));
+    std::cout << "\n";
 
+    std::copy(std::begin(names), std::end(names), std::ostream_iterator<std::string>(std::cout, "\t"));
+    std::cout << "\n";
     return 0;
 }
