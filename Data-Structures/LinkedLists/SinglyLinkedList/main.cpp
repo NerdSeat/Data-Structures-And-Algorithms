@@ -1,29 +1,36 @@
 #include "LinkedList.cpp"
 #include <iostream>
 #include <string>
+#include<vector>
+
 int main()
 {
     LinkedList<int> numbers;
     LinkedList<std::string> names;
-    //LinkedList<std::string> reverse;
-    numbers.addToHead(5);
-    numbers.addToHead(8);
-    numbers.addToHead(1);
-    numbers.addToHead(3);
-    numbers.addToHead(2);
-    //numbers.sort();
-    numbers.printList();
+    std::vector<std::string> strings{"Joseph","Matt","Dean","Holden","David","Nichol"};
+    std::vector<int> digits{5,8,1,3,2,7};
+    for(auto d :digits)
+        numbers.push_back(d);
+    numbers.print();
+
     std::cout << "The size of the integer list is: " << numbers.getSize() << std::endl;
-    names.addToTail("Joseph");
-    names.addToTail("Matt");
-    names.addToTail("Dean");
-    names.addToTail("Holden");
-    names.addToTail("David");
-    names.printList();
-    std::cout << "The number of the people registered is: " << names.getSize() << std::endl;
-    names.removeNode("David");
-    names.removeNode("Joseph");
-    std::cout << "The number of the people registered is: " << names.getSize() << std::endl;
-    names.printList();
+
+    for(auto s: strings)
+        names.push_back(s);
+        std::string random = "Candice";
+    names.insert_at(random,3);
+    std::cout<<"The names as they were added to the list\n";
+    names.print();
+
+    std::cout<<"The names again in reverse order\n";
+    names.reverse();
+    names.print();
+    
+    std::cout << "The number of people registered is: " << names.getSize() << std::endl;
+    names.remove("David");
+    names.remove("Joseph");
+    std::cout << "The number of people registered after removing two names is: " << names.getSize() << std::endl;
+    names.print();
+    
     return 0;
 }

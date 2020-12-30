@@ -2,30 +2,35 @@
 #define LINKEDLIST_H
 
 #include "Node.h"
-#include<iostream>
+#include <iostream>
+#include<cassert>
 template <typename T>
 class LinkedList
 {
 private:
-    Node<T>* head;
-    Node<T>* tail;
-    Node<T>* createNode(T data);
-    unsigned int size;
-public:
-    // Default ctor
-    LinkedList();
-    //ctor initialised with atleast one value
-    ~LinkedList();
-    void addToHead(T data);
-    void addToTail(T data);
-    void removeNode(T data);
-    void sortList();
-    bool isInList(T data);
-    bool isEmpty();
-    void printList();
-  T* begin()const;
-  T* end()const;
+  Node<T> *head;
+  Node<T> *tail;
+  Node<T> *createNode(T data);
+  unsigned int size;
 
-  unsigned int getSize();
+public:
+  // Default ctor
+  LinkedList();
+  //ctor initialised with n elements, all equal to d
+  LinkedList(unsigned int n, T d);
+  ~LinkedList();
+  void push_front(T data);
+  void insert_at(T data, int n);
+  void push_back(T data);
+  void remove(T data);
+  void reverse();
+  void sort();
+  bool find(T data);
+  bool empty();
+  void print();
+  void erase();
+  Node<T> *getHead() const;
+  Node<T> *getTail() const;
+  unsigned int getSize() const;
 };
 #endif
