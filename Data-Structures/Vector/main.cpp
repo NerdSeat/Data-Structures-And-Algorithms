@@ -23,8 +23,13 @@ int main()
     std::cout << "The capacity vector two is: ";
     std::cout << vec2.capacity() << std::endl;
     std::cout << "And the vector is :\n";
-    for (int i = 0; i < vec2.size(); i++)
-        std::cout << vec2[i] << " ";
+    for (auto it = vec.begin();it!=vec.end();++it)
+        std::cout << *it << " ";
     std::cout << std::endl;
+
+    Vector<int> data(5,4);
+    for(auto a:data)
+        std::cout<<a<<"\t";
+    std::cout<<"\n";
     return 0;
 }

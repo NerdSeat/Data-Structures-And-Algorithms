@@ -14,6 +14,7 @@ private:
 
 public:
     Vector(std::size_t);
+    Vector(std::size_t,T d);
     Vector();
     ~Vector();
     Vector(const Vector &v);

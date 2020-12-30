@@ -4,7 +4,15 @@ template <typename T>
 Vector<T>::Vector(std::size_t c)
 {
     count = c;
-    data = new T[cap];
+    data = new T[count+1];
+}
+template <typename T>
+Vector<T>::Vector(std::size_t c,T d)
+{
+    count = c;
+    data = new T[count+1];
+    for(int i = 0;i<=count;++i)
+        data[i] = d;
 }
 template <typename T>
 Vector<T>::Vector()
