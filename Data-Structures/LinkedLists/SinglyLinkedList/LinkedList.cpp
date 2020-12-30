@@ -38,7 +38,7 @@ void LinkedList<T>::insert_at(T data, int n)
     assert(head!=nullptr);
     assert(size>=n);
     Node<T> *temp = head;
-    int i = 1;
+    int i = 0;
 
     Node<T>* node = createNode(data);
     while( i < n-1 &&temp != nullptr)
