@@ -169,10 +169,10 @@ void LinkedList<T>::print()
     Node<T> *temp = head;
     while (temp != nullptr)
     {
-        std::cout << temp->data << "\t";
+        std::cout << temp->data << "-> ";
         temp = temp->link;
     }
-    std::cout << std::endl;
+    std::cout <<"nullptr"<< std::endl;
 }
 
 template <typename T>
