@@ -13,6 +13,9 @@ private:
   Node<T> *createNode(T data);
   unsigned int size;
 
+protected: 
+  void mergeSort(Node<T>* ,int length);
+  void merge(Node<T>* left,Node<T>* right);
 public:
   // Default ctor
   LinkedList();

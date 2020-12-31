@@ -161,6 +161,8 @@ bool LinkedList<T>::find(T data)
 template <typename T>
 void LinkedList<T>::sort()
 {
+    int length = size;
+    mergeSort(head,length);
 }
 
 template <typename T>
@@ -191,4 +193,13 @@ LinkedList<T>::~LinkedList()
         delete temp;
         temp = head;
     }
+}
+
+template<typename T>
+void LinkedList<T>::mergeSort(Node<T>* node,int l)
+{
+    if(node==nullptr)
+        return;
+    int mid = l/2;
+    
 }
