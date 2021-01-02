@@ -252,6 +252,9 @@ Node<T>* LinkedList<T>:: merge(Node<T>* left, Node<T>* right)
         temp->link = left;
     if(right)
         temp->link = right;
-
+    tail = temp;
+    //update the tail node
+    while(tail->link)
+        tail = tail->link;
     return newHead;
 }

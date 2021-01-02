@@ -26,9 +26,11 @@ int main()
     names.reverse();
     names.print();
 
+    std::cout<<"Tail before sorting: "<<names.getTail()->data<<std::endl;
     std::cout<<"The names after sorting the list \n";
     names.sort();
     names.print();
+    std::cout<<"Tail after sorting: "<<names.getTail()->data<<std::endl;
     
     std::cout << "The number of people registered is: " << names.getSize() << std::endl;
     names.remove("David");
