@@ -4,6 +4,6 @@ template<typename T>
 struct Node
 {
     T data;
-    Node* link = nullptr;
+    Node<T>* link = nullptr;
 };
 #endif

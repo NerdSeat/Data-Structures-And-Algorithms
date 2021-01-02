@@ -139,6 +139,12 @@ void LinkedList<T>::reverse()
     head = prev;
 }
 
+template<typename T>
+void LinkedList<T>::sort()
+{
+    mergeSort(head);
+}
+
 template <typename T>
 bool LinkedList<T>::find(T data)
 {
@@ -156,13 +162,6 @@ bool LinkedList<T>::find(T data)
         temp = temp->link;
     }
     return false;
-}
-
-template <typename T>
-void LinkedList<T>::sort()
-{
-    int length = size;
-    mergeSort(head,length);
 }
 
 template <typename T>
@@ -196,10 +195,63 @@ LinkedList<T>::~LinkedList()
 }
 
 template<typename T>
-void LinkedList<T>::mergeSort(Node<T>* node,int l)
+Node<T>* LinkedList<T>::mergeSort(Node<T>* node)
 {
-    if(node==nullptr)
-        return;
-    int mid = l/2;
+    if(node==nullptr || node->link ==nullptr)
+        return node;
+    Node<T>* slow = node;
+    Node<T>* fast = node->link;
+    //find the middle of the list
+    while(fast && fast->link)
+    {
+        slow= slow->link;
+        fast = fast->link->link;
+    }
+    //divide the list into two lists
+    Node<T>* rightHead = slow->link;
+    slow->link = nullptr;
+    Node<T>* left = mergeSort(node);
+    Node<T>* right = mergeSort(rightHead);
+    head = merge(left,right);
+    return head;
+
+}
+template<typename T>
+Node<T>* LinkedList<T>:: merge(Node<T>* left, Node<T>* right)
+{
+    if(left==nullptr){ return right; }
+    if(right==nullptr){return left; }
+    Node<T>* newHead = nullptr;
+    if( left->data<right->data)
+    {
+        newHead = left;
+        left = left->link;
+    }
+    else
+    {
+        newHead = right;
+        right = right->link;
+    }
     
+    Node<T>* temp = newHead;
+    while(left&&right)
+    {
+        if(left->data<right->data)
+        {
+            temp->link = left;
+            left = left->link;
+        }
+        else
+        {
+            temp->link = right;
+            right = right->link;
+        }
+        temp = temp->link;
+    }
+    if(left)
+        temp->link = left;
+    if(right)
+        temp->link = right;
+
+    return newHead;
 }
