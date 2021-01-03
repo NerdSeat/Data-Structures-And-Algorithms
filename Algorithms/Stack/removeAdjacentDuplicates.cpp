@@ -4,9 +4,10 @@
 #include<stack>
 #include<algorithm>
 
-std::string remAdjacent(const std::string& val)
+std::string remAdjacent(std::string val)
 {
-    std::stack<char> result;
+    std::string res = "";
+    /*std::stack<char> result;
     for(char c: val)
     {
         if(!result.empty() && result.top()==c)
@@ -18,13 +19,27 @@ std::string remAdjacent(const std::string& val)
             result.push(c);
         }
     }
-    std::string res = " ";
     while(!result.empty())
     {
-        res +=result.top();
+        res.push_back(result.top());
         result.pop();
     }
     std::reverse(res.begin(),res.end());
+*/
+//Simulate an inplace stack on the input string
+    int stackPointer = -1;
+    for(int i=0;i<val.size();i++)
+    {
+        if(stackPointer== -1 || val[stackPointer]!=val[i])
+        {
+            stackPointer++;
+            val[stackPointer]=val[i];
+        }
+        else
+            stackPointer--;
+    }
+    for(int i = 0; i<=stackPointer;i++)
+        res.push_back(val[i]);
     return res;
 }
 int main()
