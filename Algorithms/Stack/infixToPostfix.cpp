@@ -6,7 +6,7 @@
 #include <map>
 #include <vector>
 //check if a string is a numeric string
-bool operand(std::string &v)
+bool operand(const std::string &v)
 {
     return !v.empty() && std::all_of(v.begin(), v.end(), ::isdigit);
 }
@@ -82,14 +82,9 @@ std::string postfix(std::string &exp)
 
 int main()
 {
-    std::string expr_one = "( 45 + 23 * 2 ) / ( ( 30  * 4 ) - 100 )";
-    std::string expr_two = "10 * 6 / 12 - 5 + 9";
-    std::string expr_three = "45 + 23 +  t  * 2 / 5";
-    std::vector<std::string> vec;
-    vec.push_back(expr_one);
-    vec.push_back(expr_two);
-    vec.push_back(expr_three);
+    std::vector<std::string> vec{"( 45 + 23 * 2 ) / ( ( 30  * 4 ) - 100 )",
+"10 * 6 / 12 - 5 + 9","45 + 23 +  t  * 2 / 5"};
     for (auto x : vec)
-        std::cout << postfix(x) << std::endl;
+        std::cout <<x<<" -> " <<postfix(x) << std::endl;
     return 0;
 }
