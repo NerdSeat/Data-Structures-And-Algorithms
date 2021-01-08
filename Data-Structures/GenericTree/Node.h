@@ -9,6 +9,12 @@ struct Node
     T data;
     std::vector<Node<T>*> children;
     Node(T d){this->data = d;}
+    ~Node(){
+        for(int i = 0; i<children.size();++i)
+        {
+            delete children[i];
+        }
+    }
 
 };
 

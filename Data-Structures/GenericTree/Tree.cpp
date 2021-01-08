@@ -84,11 +84,7 @@ Node<T>* Tree<T>::newNode(T d)const
     Node<T>* node  = new Node<T>(d);
     return node;
 }
-template<typename T>
-Tree<T>::~Tree()
-{
-    
-}
+
 template<typename T>
 int Tree<T>::countNodes()const
 {
@@ -167,6 +163,7 @@ int Tree<T>::privateCountLeafNodes(Node<T>* node)const
 template<typename T>
 void Tree<T>::preOrderTraversal()const
 {
+    std::cout<<"Preorder traversal\n";
     privatePreOrderTraversal(root);
     std::cout<<"\n";
 }
@@ -178,4 +175,35 @@ void Tree<T>::privatePreOrderTraversal(Node<T>* node)const
     std::cout<<node->data<<"\t";
     for(int i = 0; i<node->children.size();++i)
         privatePreOrderTraversal(node->children[i]);
+}
+template<typename T>
+void Tree<T>::postOrderTraversal()const
+{
+    std::cout<<"Post order Traversal \n";
+    privatePostOrderTraversal(root);
+    std::cout<<"\n";
+}
+template<typename T>
+void Tree<T>::privatePostOrderTraversal(Node<T>* node)const
+{
+    if(node==nullptr)
+        return;
+    for(int i = 0;i<node->children.size();++i)
+        privatePostOrderTraversal(node->children[i]);
+    std::cout<<node->data<<"\t";
+}
+template<typename T>
+void Tree<T>::deleteTree(Node<T>* node)
+{
+    if(node==nullptr)
+        return;
+    for(int i = 0; i<node->children.size(); ++i)
+        deleteTree(node->children[i]);
+    delete node;
+
+}
+template<typename T>
+Tree<T>::~Tree()
+{
+    delete root;
 }

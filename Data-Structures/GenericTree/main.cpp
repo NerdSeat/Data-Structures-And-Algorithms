@@ -62,6 +62,7 @@ int main()
     std::cout<<"The number of leaf nodes is "<<tree.countLeafNodes()<<"\n";
 
     tree.preOrderTraversal();
+    tree.postOrderTraversal();
     return 0;
 
 }

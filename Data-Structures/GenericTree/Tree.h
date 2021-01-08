@@ -17,6 +17,8 @@ private:
     void privatePrintNodesAt(Node<T>*,int)const;
     int privateCountLeafNodes(Node<T>*)const;
     void privatePreOrderTraversal(Node<T>*)const;
+    void privatePostOrderTraversal(Node<T>*)const;
+    void deleteTree(Node<T>*);
 
 public:
     Tree();
@@ -28,5 +30,6 @@ public:
     void printNodesAtLevel(int k)const;
     int countLeafNodes()const;
     void preOrderTraversal()const;
+    void postOrderTraversal()const;
 };
 #endif
