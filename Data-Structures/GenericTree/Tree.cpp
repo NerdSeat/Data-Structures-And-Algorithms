@@ -124,3 +124,24 @@ int Tree<T>::privateHeight(Node<T>* node)const
     }
     return maxHeight + 1;//max height plus the root node
 }
+template<typename T>
+void Tree<T>::printNodesAtLevel(int k)const
+{
+    privatePrintNodesAt(root,k);
+    std::cout<<"\n";
+}
+template<typename T>
+void Tree<T>::privatePrintNodesAt(Node<T>* node,int k)const
+{
+    if(node==nullptr)
+        return;
+    if(k==0)
+    {
+        std::cout<<node->data<<"\t";
+        return;
+    }
+    for(int i = 0; i < node->children.size();++i)
+    {
+        privatePrintNodesAt(node->children[i],k-1);
+    }
+}

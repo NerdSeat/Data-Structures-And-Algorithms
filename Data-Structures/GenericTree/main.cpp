@@ -47,6 +47,7 @@ std::unique_ptr<Node<T>> insert()
 */
 int main()
 {
+    int k = 2;
     Tree<int> tree;
     //std::unique_ptr<Node<int>> root = insert();
     tree.insert();
@@ -54,6 +55,8 @@ int main()
     std::cout<<"The tree has "<<tree.countNodes()<<" nodes\n";
     std::cout<<"And the height of the tree is "<<tree.height()<<"\n";
 
+    std::cout<<"all the nodes at depth "<<k<<" are\n";
+    tree.printNodesAtLevel(k);
     return 0;
 
 }
