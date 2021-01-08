@@ -47,6 +47,7 @@ std::unique_ptr<Node<T>> insert()
 */
 int main()
 {
+    //5 3 7 3 2 2 4 6 2 1 9 2 10 12 1 8 0 0 0 0 0 0
     int k = 2;
     Tree<int> tree;
     //std::unique_ptr<Node<int>> root = insert();
@@ -57,6 +58,10 @@ int main()
 
     std::cout<<"all the nodes at depth "<<k<<" are\n";
     tree.printNodesAtLevel(k);
+
+    std::cout<<"The number of leaf nodes is "<<tree.countLeafNodes()<<"\n";
+
+    tree.preOrderTraversal();
     return 0;
 
 }

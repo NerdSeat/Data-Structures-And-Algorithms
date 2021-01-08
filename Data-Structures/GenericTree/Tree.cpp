@@ -37,8 +37,8 @@ void Tree<T>::insert()
 template<typename T>
 void Tree<T>:: print()const
 {
-    //privatePrint(root);
-    levelOrderPrint();
+    privatePrint(root);
+    //levelOrderPrint();
     std::cout<<"\n";
 }
 template<typename T>
@@ -144,4 +144,38 @@ void Tree<T>::privatePrintNodesAt(Node<T>* node,int k)const
     {
         privatePrintNodesAt(node->children[i],k-1);
     }
+}
+template<typename T>
+int Tree<T>::countLeafNodes()const
+{
+    return privateCountLeafNodes(root);
+}
+template<typename T>
+int Tree<T>::privateCountLeafNodes(Node<T>* node)const
+{
+    if(node==nullptr)
+        return 0;
+    if(node->children.size()==0)
+        return 1;
+    int nodes = 0;
+    for(int i = 0;i<node->children.size();++i)
+    {
+        nodes += privateCountLeafNodes(node->children[i]);
+    }
+    return nodes;
+}
+template<typename T>
+void Tree<T>::preOrderTraversal()const
+{
+    privatePreOrderTraversal(root);
+    std::cout<<"\n";
+}
+template<typename T>
+void Tree<T>::privatePreOrderTraversal(Node<T>* node)const
+{
+    if(node==nullptr)
+        return;
+    std::cout<<node->data<<"\t";
+    for(int i = 0; i<node->children.size();++i)
+        privatePreOrderTraversal(node->children[i]);
 }
