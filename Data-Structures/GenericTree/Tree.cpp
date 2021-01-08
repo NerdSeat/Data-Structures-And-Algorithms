@@ -22,7 +22,7 @@ void Tree<T>::insert()
         std::cout<<"How many child nodes does "<<front->data<<" have? ";
         std::size_t nodes;
         std::cin>>nodes;
-        for(int i = 0; i < nodes; ++i)
+        for(int i = 1; i <= nodes; ++i)
         {
             std::cout<<"Enter the "<<i<<"th node:\t";
             T child;
@@ -76,7 +76,6 @@ void Tree<T>::levelOrderPrint()const
         }
         std::cout<<"\n";
     }
-    std::cout<<node->data<<": ";
 
 }
 template<typename T>
@@ -106,4 +105,22 @@ int Tree<T>::privateCountNodes(Node<T>* node)const
         sum += privateCountNodes(node->children[i]);
     }
     return sum;
+}
+template<typename T>
+int Tree<T>::height()const
+{
+    return privateHeight(root);
+}
+template<typename T>
+int Tree<T>::privateHeight(Node<T>* node)const
+{
+    if(node==nullptr)
+        return 0;
+    int maxHeight = 0;
+    for(int i = 0; i<node->children.size(); ++i)
+    {
+        int childHeight = privateHeight(node->children[i]);
+        maxHeight = maxHeight > childHeight ? maxHeight : childHeight;
+    }
+    return maxHeight + 1;//max height plus the root node
 }

@@ -13,6 +13,7 @@ private:
     void privatePrint(Node<T>*)const;
     void levelOrderPrint()const;
     int privateCountNodes(Node<T>*) const;
+    int privateHeight(Node<T>*)const;
 
 public:
     Tree();
@@ -20,5 +21,6 @@ public:
     void insert();
     void print()const;
     int countNodes()const;
+    int height()const;
 };
 #endif

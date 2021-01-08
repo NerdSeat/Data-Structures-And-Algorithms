@@ -52,6 +52,7 @@ int main()
     tree.insert();
     tree.print();
     std::cout<<"The tree has "<<tree.countNodes()<<" nodes\n";
+    std::cout<<"And the height of the tree is "<<tree.height()<<"\n";
 
     return 0;
 
