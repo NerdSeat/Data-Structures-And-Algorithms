@@ -14,7 +14,7 @@ protected:
     Node<T>* privateInsert();
     void iterativeInsert();
     void privatePrint(Node<T>*)const;
-
+    void levelOrderPrint()const;
 
 public:
     BinaryTree();

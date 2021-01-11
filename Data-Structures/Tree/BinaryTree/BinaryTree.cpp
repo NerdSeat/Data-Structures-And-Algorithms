@@ -67,7 +67,8 @@ void BinaryTree<T>::iterativeInsert()
 template<typename T>
 void BinaryTree<T>::print()const
 {
-    privatePrint(root);
+    //privatePrint(root);
+    levelOrderPrint();
 }
 template<typename T>
 void BinaryTree<T>::privatePrint(Node<T>* node)const
@@ -82,6 +83,23 @@ void BinaryTree<T>::privatePrint(Node<T>* node)const
     std::cout<<"\n";
     privatePrint(node->left);
     privatePrint(node->right);
+}
+template<typename T>
+void BinaryTree<T>::levelOrderPrint()const
+{
+    std::queue<Node<T>*> q;
+    q.push(root);
+    while(!q.empty())
+    {
+        Node<T>* temp = q.front();
+        std::cout<<temp->data<<"\t";
+        q.pop();
+        if(temp->left!=nullptr)
+            q.push(temp->left);
+        if(temp->right!=nullptr)
+            q.push(temp->right);
+
+    }
 }
 template<typename T>
 BinaryTree<T>::~BinaryTree()
