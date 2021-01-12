@@ -69,6 +69,7 @@ void BinaryTree<T>::print()const
 {
     //privatePrint(root);
     levelOrderPrint();
+    std::cout<<"\n";
 }
 template<typename T>
 void BinaryTree<T>::privatePrint(Node<T>* node)const
@@ -100,6 +101,19 @@ void BinaryTree<T>::levelOrderPrint()const
             q.push(temp->right);
 
     }
+}
+template<typename T>
+unsigned int BinaryTree<T>::size()const
+{
+    return privateCountNodes(root);
+}
+
+template<typename T>
+unsigned int BinaryTree<T>::privateCountNodes(Node<T>* node)const
+{
+    if(node==nullptr)
+        return 0;
+    return 1 + privateCountNodes(node->left) + privateCountNodes(node->right);
 }
 template<typename T>
 BinaryTree<T>::~BinaryTree()

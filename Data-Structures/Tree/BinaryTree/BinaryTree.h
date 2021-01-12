@@ -15,12 +15,15 @@ protected:
     void iterativeInsert();
     void privatePrint(Node<T>*)const;
     void levelOrderPrint()const;
+    unsigned int privateCountNodes(Node<T>*)const;
+
 
 public:
     BinaryTree();
     ~BinaryTree();
     void insert();
     void print()const;
+    unsigned int size()const;
 
 };
 
