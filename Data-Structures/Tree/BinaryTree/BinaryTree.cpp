@@ -77,8 +77,11 @@ void BinaryTree<T>::print()const
     std::cout<<"Inorder traversal iterative solution\n";
     privateInorderTraversalIterative();
     std::cout<<"\n";
-    std::cout<<"Preorder Traversal\n";
+    std::cout<<"Preorder Traversal recursive solution\n";
     preorderTraversal();
+    std::cout<<"\n";
+    std::cout<<"Preorder Traversal iterative solution\n";
+    privatePreorderTraversalIterative();
     std::cout<<"\n";
 }
 template<typename T>
@@ -109,7 +112,6 @@ void BinaryTree<T>::levelOrderPrint()const
             q.push(temp->left);
         if(temp->right!=nullptr)
             q.push(temp->right);
-
     }
 }
 template<typename T>
@@ -171,6 +173,24 @@ void BinaryTree<T>::privatePreorderTraversal(Node<T>* node)const
     std::cout<<node->data<<"\t";
     privatePreorderTraversal(node->left);
     privatePreorderTraversal(node->right);
+}
+template<typename T>
+void BinaryTree<T>::privatePreorderTraversalIterative()const
+{
+    Node<T>* node = root;
+    std::stack<Node<T>*> stack;
+    while (node!=nullptr || !stack.empty())
+    {
+        while(node!=nullptr)
+        {
+            std::cout<<node->data<<"\t";
+            stack.push(node->right);
+            node = node->left;
+        }
+        node = stack.top();
+        stack.pop();
+    }
+
 }
 template<typename T>
 BinaryTree<T>::~BinaryTree()

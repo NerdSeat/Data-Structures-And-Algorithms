@@ -19,6 +19,7 @@ protected:
     void privateInorderTraversal(Node<T>*)const;
     void privateInorderTraversalIterative()const;
     void privatePreorderTraversal(Node<T>*)const;
+    void privatePreorderTraversalIterative()const;
 
 public:
     BinaryTree();
