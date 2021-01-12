@@ -68,7 +68,14 @@ template<typename T>
 void BinaryTree<T>::print()const
 {
     //privatePrint(root);
+    std::cout<<"Level order traversal\n";
     levelOrderPrint();
+    std::cout<<"\n";
+    std::cout<<"Inorder traversal using recursion\n";
+    inorderTraversal();
+    std::cout<<"\n";
+    std::cout<<"Inorder traversal iterative solution\n";
+    privateInorderTraversalIterative();
     std::cout<<"\n";
 }
 template<typename T>
@@ -114,6 +121,39 @@ unsigned int BinaryTree<T>::privateCountNodes(Node<T>* node)const
     if(node==nullptr)
         return 0;
     return 1 + privateCountNodes(node->left) + privateCountNodes(node->right);
+}
+
+template<typename T>
+void BinaryTree<T>::inorderTraversal()const
+{
+    privateInorderTraversal(root);
+}
+template<typename T>
+void BinaryTree<T>::privateInorderTraversal(Node<T>* node)const
+{
+    if(node==nullptr)
+        return;
+    privateInorderTraversal(node->left);
+    std::cout<<node->data<<"\t";
+    privateInorderTraversal(node->right);
+}
+template<typename T>
+void BinaryTree<T>::privateInorderTraversalIterative()const
+{
+    Node<T>* curr = root;
+    std::stack<Node<T>*> stack;
+    while(curr!=nullptr ||!stack.empty() )
+    {
+        while(curr != nullptr)
+        {
+            stack.push(curr);
+            curr = curr->left;
+        }
+        curr = stack.top();
+        std::cout<<curr->data<<"\t";
+        stack.pop();
+        curr = curr->right;
+    }
 }
 template<typename T>
 BinaryTree<T>::~BinaryTree()
