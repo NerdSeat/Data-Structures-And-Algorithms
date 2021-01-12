@@ -18,6 +18,7 @@ protected:
     unsigned int privateCountNodes(Node<T>*)const;
     void privateInorderTraversal(Node<T>*)const;
     void privateInorderTraversalIterative()const;
+    void privatePreorderTraversal(Node<T>*)const;
 
 public:
     BinaryTree();
@@ -26,6 +27,7 @@ public:
     void print()const;
     unsigned int size()const;
     void inorderTraversal()const;
+    void preorderTraversal()const;
 
 };
 
