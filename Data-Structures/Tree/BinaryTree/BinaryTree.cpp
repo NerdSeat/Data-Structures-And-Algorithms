@@ -217,3 +217,17 @@ BinaryTree<T>::~BinaryTree()
 {
     delete root;
 }
+template<typename T>
+int BinaryTree<T>::height()const
+{
+    return privateHeight(root);
+}
+template<typename T>
+int BinaryTree<T>::privateHeight(Node<T>* node)const
+{
+    if(node==nullptr)
+        return 0;
+    int left = privateHeight(node->left);
+    int right = privateHeight(node->right);
+    return 1 + std::max(left,right);
+}

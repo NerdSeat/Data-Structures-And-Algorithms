@@ -21,6 +21,7 @@ protected:
     void privatePreorderTraversal(Node<T>*)const;
     void privatePreorderTraversalIterative()const;
     void privatePostOrderTraversal(Node<T>*)const;
+    int privateHeight(Node<T>*)const;
 
 public:
     BinaryTree();
@@ -31,6 +32,7 @@ public:
     void inorderTraversal()const;
     void preorderTraversal()const;
     void postOrderTraversal()const;
+    int height()const;
 
 };
 
