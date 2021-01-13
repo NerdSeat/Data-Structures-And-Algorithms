@@ -22,7 +22,7 @@ protected:
     void privatePreorderTraversalIterative()const;
     void privatePostOrderTraversal(Node<T>*)const;
     int privateHeight(Node<T>*)const;
-
+    bool privateFind(Node<T>*, T)const;
 public:
     BinaryTree();
     ~BinaryTree();
@@ -33,6 +33,7 @@ public:
     void preorderTraversal()const;
     void postOrderTraversal()const;
     int height()const;
+    bool find(T d)const;
 
 };
 

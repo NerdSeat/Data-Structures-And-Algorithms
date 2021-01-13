@@ -231,3 +231,18 @@ int BinaryTree<T>::privateHeight(Node<T>* node)const
     int right = privateHeight(node->right);
     return 1 + std::max(left,right);
 }
+template<typename T>
+bool BinaryTree<T>::find(T data)const
+{
+    return privateFind(root,data);
+}
+template<typename T>
+bool BinaryTree<T>::privateFind(Node<T>* node,T data)const
+{
+    if(node==nullptr)
+        return false;
+    if(node->data==data)
+        return true;
+    return (privateFind(node->right,data)||privateFind(node->left,data));
+
+}
