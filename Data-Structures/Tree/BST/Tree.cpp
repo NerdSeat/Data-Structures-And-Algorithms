@@ -83,6 +83,40 @@ T Tree<T>::privateSmallest(Node<T>* node)const
     return privateSmallest(node->left);
 }
 template<typename T>
+bool Tree<T>::find(T d)const
+{
+    return privateFind(root,d);
+}
+template<typename T>
+bool Tree<T>::privateFind(Node<T>* node, T d)const
+{
+    if(node==nullptr)
+        return false;
+    if(node->data == d)
+        return true;
+    if(d < node->data)
+        return privateFind(node->left,d);
+    else
+        return privateFind(node->right,d);
+    
+}
+template<typename T>
+void Tree<T>::invert()
+{
+    privateInvert(root);
+}
+template<typename T>
+void Tree<T>::privateInvert(Node<T>* node)
+{
+    if(node==nullptr)
+        return;
+    Node<T>* tmp = node->left;
+    node->left = node->right;
+    node->right = tmp;
+    privateInvert(node->left);
+    privateInvert(node->right);
+}
+template<typename T>
 Tree<T>::~Tree()
 {
     delete root;
