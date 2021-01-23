@@ -246,3 +246,108 @@ bool BinaryTree<T>::privateFind(Node<T>* node,T data)const
     return (privateFind(node->right,data)||privateFind(node->left,data));
 
 }
+template<typename T>
+T BinaryTree<T>::min()const
+{
+    return privateMin(root);
+}
+template<typename T>
+T BinaryTree<T>::privateMin(Node<T>*node)const
+{
+    if(node==nullptr)
+        return INT_MAX;
+    T ans = node->data;
+    T min_left = privateMin(node->left);
+    T min_right = privateMin(node->right);
+
+    return std::min(ans,std::min(min_left,min_right));
+
+}
+template<typename T>
+T BinaryTree<T>::max()const
+{
+    return privateMax(root);
+}
+template<typename T>
+T BinaryTree<T>::privateMax(Node<T>* node)const
+{
+    if(node==nullptr)
+        return INT_MIN;//return int for now as the test method will declare the class as int
+    T maxVal = node->data;
+    T leftMax = privateMax(node->left);
+    T rightMax = privateMax(node->right);
+    return std::max(maxVal,std::max(leftMax,rightMax));
+}
+template<typename T>
+int BinaryTree<T>::countLeafNodes()const
+{
+    return privateCountLeafNodes(root);
+}
+template<typename T>
+int BinaryTree<T>::privateCountLeafNodes(Node<T>* node)const
+{
+    if(node ==nullptr)
+        return 0;
+    if(node->left ==nullptr && node->right==nullptr)
+        return 1;
+    return privateCountLeafNodes(node->left) + privateCountLeafNodes(node->right);
+
+}
+template<typename T>
+int BinaryTree<T>::diameter()const
+{
+    std::pair<int,int> diam = privateDiameter(root);
+    return diam.second;
+}
+template<typename T>
+std::pair<int,int> BinaryTree<T>::privateDiameter(Node<T>* node)const
+{
+    if(node==nullptr)
+    {
+        std::pair<int,int> pair;
+        pair.first = 0;
+        pair.second = 0;
+        return pair;
+    }
+    std::pair<int,int> leftPair = privateDiameter(node->left);
+    std::pair<int,int> rightPair = privateDiameter(node->right);
+
+    int leftHeight = leftPair.first;
+    int rightHeight = rightPair.first;
+    int leftDiam = leftPair.second;
+    int rightDiam = rightPair.second;
+    int height = 1 + std::max(leftHeight,rightHeight);
+    int diam = std::max(leftHeight+rightHeight,std::max(leftDiam,rightDiam));
+    return std::make_pair(height,diam);
+
+}
+
+template<typename T>
+void BinaryTree<T>::path( T data)const
+{
+    std::vector<T> route;
+    if(privatePath(root,data,route))
+    {
+        std::cout<<"The path to "<<data<<" is \n";
+        for(auto r: route)
+            std::cout<<r<<"\t";
+    }
+    else
+        std::cout<<"No path to "<<data;
+    std::cout<<'\n';
+}
+template<typename T>
+bool BinaryTree<T>::privatePath(Node<T>* node, T data,std::vector<T>&v)const
+{
+    if(node==nullptr)
+        return false;
+    v.push_back(node->data);
+    if(node->data==data)
+        return true;
+    bool left = privatePath(node->left,data,v);
+    bool right = privatePath(node->right,data,v);
+    if(left || right)
+        return true;
+    v.pop_back();
+    return false;
+}
