@@ -117,6 +117,62 @@ void Tree<T>::privateInvert(Node<T>* node)
     privateInvert(node->right);
 }
 template<typename T>
+bool Tree<T>::valid()const
+{
+    return privateValid(root);
+}
+template<typename T>
+bool Tree<T>::privateValid(Node<T>* node)const
+{
+    if(node!=nullptr)
+    {
+        if(node->left && node->right)
+        {
+            if(node->data > node->left->data && node->data < node->right->data )
+            {
+                return privateValid(node->left);
+                return privateValid(node->right);
+            }
+            else
+                return false;
+        }
+        else if (node->left==nullptr && node->right!=nullptr)
+        {
+            if(node->data<node->right->data)
+                return privateValid(node->right);
+            else
+                return false;
+        }
+        else if(node->right == nullptr && node->left !=nullptr)
+        {
+            if(node->data>node->left->data)
+                return privateValid(node->left);
+            else
+                return false;
+        }
+
+    }
+    else
+        return true;
+}
+template<typename T>
+std::vector<T> Tree<T>::range(T val1,T val2)const
+{
+    std::vector<T> rangeValues;
+    privateRange(root,val1,val2,rangeValues);
+    return rangeValues;
+}
+template<typename T>
+void Tree<T>::privateRange(Node<T>* node,T val1,T val2,std::vector<T>& vec)const
+{
+    if(node==nullptr)
+        return;
+    if(val1<=node->data && val2 >=node->data)
+        vec.push_back(node->data);
+    privateRange(node->left,val1,val2,vec);
+    privateRange(node->right,val1,val2,vec);
+}
+template<typename T>
 Tree<T>::~Tree()
 {
     delete root;

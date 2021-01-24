@@ -26,13 +26,26 @@ int main()
     if(names.find(worker))
         std::cout<<worker<<" Works here \n";
     else
-        std::cout<<"There is no record of" <<worker<<" in this company\n";
+        std::cout<<"There is no record of "<<worker<<" in this company\n";
     
     std::cout<<"The first name is always "<<names.smallest()<<'\n';
     names.print();
     names.invert();
     std::cout<<"The inverted tree is now \n";
     names.print();
+
+    if(tree.valid())
+        std::cout<<"This is a valid tree\n";
+    else 
+        std::cout<<"This is NOT a valid tree\n";
+
+
+    int val1 = 4, val2 = 10;
+    std::cout << "The values between " << val1 << " and " << val2 << " are :\n";
+    std::vector<int> range = tree.range(val1, val2);
+    for(int r : range)
+        std::cout<<r<<"\t";
+    std::cout<<'\n';
 
     return 0;
 }

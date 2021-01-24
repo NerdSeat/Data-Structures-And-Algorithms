@@ -1,6 +1,8 @@
 #pragma once
+
 #include "Node.h"
 #include<iostream>
+#include<vector>
 template <typename T>
 class Tree
 {
@@ -12,6 +14,8 @@ private:
     T privateSmallest(Node<T>*)const;
     bool privateFind(Node<T>*,T)const;
     void privateInvert(Node<T>*);
+    bool privateValid(Node<T>*)const;
+    void privateRange(Node<T>*,T,T,std::vector<T>&)const;
 public:
     Tree(T d);
     Tree();
@@ -21,5 +25,7 @@ public:
     T smallest()const;
     bool find(T )const;
     void invert();
+    bool valid()const;
+    std::vector<T> range(T ,T)const;
     
 };
